@@ -54,8 +54,8 @@ if [ $work_mode = "ch" ]; then
 	read -p "是否需要替换nginx内的域名信息？(y/n(默认))：" is_mod
  	if [ "$is_mod" = "y" ]; then
 		sed -i "s/%old_domain/%domainName/g" /etc/nginx/nginx.conf
-  	echo "替换成功！将重启机器清空旧证书缓存"
-   	reboot
+		echo "替换成功！将重启机器清空旧证书缓存"
+		reboot
 	fi
 fi
  
