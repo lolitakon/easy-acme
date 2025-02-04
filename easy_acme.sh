@@ -11,9 +11,9 @@ else
 fi
 
 # acme.sh申请证书
-read -p "请选择工作模式（ch（change）/new(默认)）" work_mode
+read -p "请选择工作模式（ch（change）/new(默认)）：" work_mode
 read -p "请输入证书存放路径（默认/opt/tls/）：" CA_Path
-if [ $CA_Path = "" ]; then
+if [ "$CA_Path" = "" ]; then
   CA_Path="/opt/tls/"
 fi
 
