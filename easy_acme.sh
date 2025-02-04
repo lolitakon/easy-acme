@@ -57,6 +57,6 @@ if [ $work_mode = "ch" ]; then
 		echo "替换成功！将重启机器清空旧证书缓存"
 		reboot
 	fi
+else
+	systemctl start nginx
 fi
- 
-systemctl start nginx
