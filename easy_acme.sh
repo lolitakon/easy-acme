@@ -51,9 +51,10 @@ if [ $work_mode = "ch" ]; then
 	echo "删除acme残留"
 	read -p "请输入您的旧域名：" old_domain
  	acme remove $old_domain
-	read -p "是否需要替换nginx内的域名信息？(y/n(默认))" is_mod
+	read -p "是否需要替换nginx内的域名信息？(y/n(默认))：" is_mod
  	if [ "$is_mod" = "y" ]; then
-		sed -i 's/%old_domain/%domainName/g' /etc/nginx/nginx.conf
+		sed -i "s/%old_domain/%domainName/g" /etc/nginx/nginx.conf
+  	echo "替换成功！"
 	fi
 fi
  
