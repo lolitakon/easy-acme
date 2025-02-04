@@ -44,4 +44,17 @@ else
 fi
 
 acme --installcert -d $domainName --ecc  --key-file   /opt/tls/server.key   --fullchain-file /opt/tls/server.crt
+echo "证书申请成功！"
 
+# 删除acme残留以及更新nginx
+if [ $work_mode = "ch" ]; then
+	echo "删除acme残留"
+	read -p "请输入您的旧域名：" old_domain
+ 	acme remove $old_domain
+	read -p "是否需要替换nginx内的域名信息？(y/n(默认))" is_mod
+ 	if [ "$is_mod" = "y" ]; then
+		sed -i 's/%old_domain/%domainName/g' /etc/nginx/nginx.conf
+	fi
+fi
+ 
+systemctl start nginx
