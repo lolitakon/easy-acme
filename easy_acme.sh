@@ -44,7 +44,7 @@ else
 	acme  --issue -d $domainName --$mode -k ec-256
 fi
 
-acme --installcert -d $domainName --ecc  --key-file   /opt/tls/server.key   --fullchain-file /opt/tls/server.crt
+acme --installcert -d $domainName --ecc  --key-file   $CA_Path"server.key"   --fullchain-file $CA_Path"server.crt"
 echo "证书申请成功！"
 
 # 删除acme残留以及更新nginx
